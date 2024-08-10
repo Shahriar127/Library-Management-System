@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System - Books</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS file -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .book-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+    .book-card-content {
+      padding: 20px;
+    }
+    .book-card-title {
+      font-size: 1.6em;
+      color: #007BFF;
+      margin: 0;
+    }
+    .book-card-isbn {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+    }
+    .book-card-description {
+      margin-top: 10px;
+      color: #333;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .book-card {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Book List</h1>
+  <div th:each="book : ${books}" class="book-card">
+    <div class="book-card-content">
+      <h2 class="book-card-title" th:text="${book.name}">Book Title</h2>
+      <p class="book-card-isbn" th:text="'ISBN: ' + ${book.isbn}">ISBN: 1234567890</p>
+      <p class="book-card-description" th:text="${book.description}">Book description goes here...</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
